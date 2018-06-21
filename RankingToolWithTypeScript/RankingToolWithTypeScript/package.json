@@ -1,0 +1,14 @@
+{
+  "name": "ranking-tool-with-type-script",
+  "version": "0.0.0",
+  "description": "RankingToolWithTypeScript",
+  "main": "dist/server.js",
+  "author": {
+    "name": "Jeffrey Siu"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "express": "latest",
+    "body-parser": "latest"
+  }
+}
