@@ -2,13 +2,18 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const bodyParser = require("body-parser");
+const SwaggerUi = require("swagger-ui-express");
 const Leaderboard_1 = require("./Models/Leaderboard");
+const DynamoDBClient_1 = require("./DB/DynamoDBClient");
+const staticResourcePath = `${__dirname}/static/`;
+let swaggerDocument = require(`${staticResourcePath}swagger.json`);
 const defaultKFactor = 10;
 const defaultStartingElo = 1000;
+let dynamoClient = new DynamoDBClient_1.DynamoDBClient("us-east-1", "http://localhost:8000");
+dynamoClient.InsertData();
 let leaderboardList = new Array();
-const staticResourcePath = `${__dirname}\\static\\`;
-const port = parseInt(process.env.port) || 3000;
 const server = express();
+exports.Server = server;
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server
@@ -93,5 +98,5 @@ server
         res.status(400).send(`Please provide a value for LeaderboardName!`);
     }
 })
-    .listen(port, () => console.log(`Listening on port: ${port}...`));
+    .use('/api', SwaggerUi.serve, SwaggerUi.setup(swaggerDocument));
 //# sourceMappingURL=server.js.map

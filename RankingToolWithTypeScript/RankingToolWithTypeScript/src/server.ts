@@ -1,19 +1,24 @@
 ﻿import * as express from "express";
 import * as bodyParser from "body-parser";
+import * as SwaggerUi from "swagger-ui-express";
 import * as fs from "fs";
 import { Season } from "./Models/Season";
 import { Person } from "./Models/Person";
 import { Leaderboard } from "./Models/Leaderboard";
 import { EloCalculation } from "./Models/EloCalculation";
+import { DynamoDBClient } from "./DB/DynamoDBClient";
+
+const staticResourcePath = `${__dirname}/static/`;
+let swaggerDocument = require(`${staticResourcePath}swagger.json`);
 
 const defaultKFactor: number = 10;
 const defaultStartingElo: number = 1000;
 
+let dynamoClient = new DynamoDBClient("us-east-1", "http://localhost:8000");
+dynamoClient.InsertData();
+
 let leaderboardList: Leaderboard[] = new Array();
 
-const staticResourcePath = `${__dirname}\\static\\`;
-
-const port: number = parseInt(process.env.port) || 3000;
 const server: any = express();
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -105,4 +110,12 @@ server
         }
     })
 
-    .listen(port, () => console.log(`Listening on port: ${port}...`));
+
+
+
+
+
+
+    .use('/api', SwaggerUi.serve, SwaggerUi.setup(swaggerDocument))
+
+export { server as Server }

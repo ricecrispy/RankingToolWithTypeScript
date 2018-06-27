@@ -1,2 +1,3 @@
+C:\Users\dpa51778\Desktop\RankingSystemWithTypeScript\RankingToolWithTypeScript\RankingToolWithTypeScript\obj\Debug\RankingToolWithTypeScript.njsprojAssemblyReference.cache
 C:\Users\dpa51778\Desktop\RankingSystemWithTypeScript\RankingToolWithTypeScript\RankingToolWithTypeScript\obj\Debug\RankingToolWithTypeScript.njsproj.CoreCompileInputs.cache
 C:\Users\dpa51778\Desktop\RankingSystemWithTypeScript\RankingToolWithTypeScript\RankingToolWithTypeScript\bin\Microsoft.NodejsTools.WebRole.dll

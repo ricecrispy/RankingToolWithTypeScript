@@ -1,0 +1,185 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "version": "1.0.0",
+    "title": "Leaderboard"
+  },
+  "host": "placeholder.io",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "/"
+    },
+    {
+      "name": "leaderboard",
+      "description": "leaderboard stuff"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "/"
+        ],
+        "summary": "Landing page",
+        "description": "Goes to the landing page",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/leaderboard/getleaderboard": {
+      "post": {
+        "tags": [
+          "leaderboard"
+        ],
+        "summary": "Gets a leaderboard by name",
+        "description": "",
+        "operationId": "getleaderboard",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "LeaderboardName",
+            "in": "formData",
+            "description": "Name of the leaderboard",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Needs input"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/leaderboard/createleaderboard": {
+      "post": {
+        "tags": [
+          "leaderboard"
+        ],
+        "summary": "Creates a leaderboard",
+        "description": "",
+        "operationId": "createleaderboard",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "LeaderboardName",
+            "in": "formData",
+            "description": "Name of the new leaderboard",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Leaderboard created!"
+          },
+          "400": {
+            "description": "Needs input"
+          }
+        }
+      }
+    },
+    "/leaderboard/reportmatch": {
+      "post": {
+        "tags": [
+          "leaderboard"
+        ],
+        "summary": "Reports a match",
+        "description": "",
+        "operationId": "reportmatch",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "LeaderboardName",
+            "in": "formData",
+            "description": "Name of the new leaderboard",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "winner",
+            "in": "formData",
+            "description": "Name/ID of the winner",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "loser",
+            "in": "formData",
+            "description": "Name/ID of the loser",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Match has been reported!"
+          },
+          "400": {
+            "description": "Needs input"
+          }
+        }
+      }
+    },
+    "/leaderboard/getcurrentseasonrankedlist": {
+      "post": {
+        "tags": [
+          "leaderboard"
+        ],
+        "summary": "Get the ladder of the current season",
+        "description": "",
+        "operationId": "getcurrentseasonrankedlist",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "LeaderboardName",
+            "in": "formData",
+            "description": "Name of the new leaderboard",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "Needs input"
+          }
+        }
+      }
+    }
+  }
+}
